@@ -14,7 +14,7 @@ def download_data():
     # 2. Tambahkan parameter cache_dir
     dataset = load_dataset(
         "Voxel51/WaveUI-25k", 
-        split="train[:50]", 
+        split="train[:500]", 
         cache_dir="data/hf_cache" # Mengalihkan penyimpanan sementara ke sini
     )
     
@@ -34,7 +34,7 @@ def download_data():
         except Exception as e:
             print(f"Gagal memproses gambar {i+1}: {e}")
             
-    print("Selesai! 50 sampel gambar UI berhasil disimpan.")
+    print(f"Selesai! {len(dataset)} sampel gambar UI berhasil disimpan.")
 
 if __name__ == "__main__":
     download_data()
