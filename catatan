@@ -1,0 +1,18 @@
+UNTUK MERUBAH JUMLAH DATASET
+
+Remove-Item -Recurse -Force data\raw
+Remove-Item -Recurse -Force data\processed
+Kemudian ubah total datanya di prepare.py
+python src/prepare.py
+python src/preprocess.py
+python src/train.py
+# Update tracking DVC untuk folder data yang baru
+dvc add data/raw data/processed
+
+# Daftarkan perubahan ke Git
+git add src/prepare.py data/raw.dvc data/processed.dvc models/extracted_palettes.json
+
+# Kunci (Commit)
+git commit -m "feat: scale up dataset menjadi 500 gambar untuk meningkatkan akurasi"
+
+done..
