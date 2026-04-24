@@ -1,0 +1,39 @@
+# =========================
+# PYTHON & ENVIRONMENTS
+# =========================
+# Abaikan folder virtual environment (SANGAT PENTING!)
+venv/
+env/
+.env
+
+# Abaikan file cache/sampah bawaan Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# JUPYTER NOTEBOOK
+# =========================
+# Abaikan file backup otomatis dari Jupyter
+.ipynb_checkpoints/
+
+# =========================
+# IDE & OS SETTINGS
+# =========================
+# Abaikan pengaturan lokal VS Code
+.vscode/
+
+# Abaikan file sampah bawaan Mac/Windows
+.DS_Store
+Thumbs.db
+
+# =========================
+# DATA & MODELS (Backup tambahan)
+# =========================
+# Berjaga-jaga jika .gitignore di folder data terhapus
+data/raw/
+data/processed/
+data/hf_cache/
+
+# Catatan: File .dvc dan .json di dalam models/ dan data/ TETAP akan ter-upload 
+# karena tidak kita masukkan ke daftar blokir ini.
