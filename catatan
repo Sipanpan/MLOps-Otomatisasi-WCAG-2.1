@@ -16,3 +16,9 @@ git add src/prepare.py data/raw.dvc data/processed.dvc models/extracted_palettes
 git commit -m "feat: scale up dataset menjadi 500 gambar untuk meningkatkan akurasi"
 
 done..
+
+
+update git :
+git add .
+git commit -m "feat: menambahkan log eksperimen K-Means dan evaluasi Elbow Method"
+git push origin main
