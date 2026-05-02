@@ -1,0 +1,15 @@
+artifact_uri: file:C:/843936372931320635/d5715cbfed27415681c39a8b16420cea/artifacts#Kuliah/SMT
+  6/PDM/project/mlruns
+end_time: 1777706782434
+entry_point_name: ''
+experiment_id: '843936372931320635'
+lifecycle_stage: active
+run_id: d5715cbfed27415681c39a8b16420cea
+run_name: KMeans_K_5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777706780317
+status: 3
+tags: []
+user_id: Sipan

@@ -1,0 +1,1 @@
+K=5 dipilih. Selisih metrik dengan K optimal murni (Silhouette delta=0.0755, DBI delta=0.1857) sangat kecil, sehingga trade-off ini dapat diterima mengingat K=5 sesuai standar desain UI (Material Design, Apple HIG, WCAG 2.1) yang mensyaratkan minimal 4-5 peran warna dalam palet antarmuka.
