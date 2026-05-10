@@ -37,3 +37,4 @@ data/hf_cache/
 
 # Catatan: File .dvc dan .json di dalam models/ dan data/ TETAP akan ter-upload 
 # karena tidak kita masukkan ke daftar blokir ini.
+/models
