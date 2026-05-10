@@ -19,7 +19,7 @@ uploaded_file = st.file_uploader("Unggah Screenshot Website (JPG/PNG)", type=['p
 if uploaded_file is not None:
     # Tampilkan gambar yang diunggah
     image = Image.open(uploaded_file)
-    st.image(image, caption="Antarmuka Asli", use_column_width=True)
+    st.image(image, caption="Antarmuka Asli", use_container_width=True)
 
     # Tombol untuk mulai memproses
     if st.button("Mulai Ekstrak & Analisis Warna", use_container_width=True):
@@ -34,13 +34,16 @@ if uploaded_file is not None:
         cols = st.columns(5)
         for i, col in enumerate(cols):
             hex_color = '#%02x%02x%02x' % tuple(palette[i])
+            rgb_text = f"rgb{tuple(palette[i])}"
             with col:
                 st.markdown(f"""
-                <div style="background-color:{hex_color}; height:100px; border-radius:10px; border:1px solid #ddd;"></div>
-                <p style="text-align:center; margin-top:10px; font-family:monospace;">
-                    <b>Warna {i+1}</b><br>{hex_color}<br>{palette[i]}
-                </p>
+                <div style="background-color:{hex_color}; height:80px; border-radius:10px; border:1px solid #ddd; margin-bottom:10px;"></div>
                 """, unsafe_allow_html=True)
+                
+                st.caption(f"**Warna {i+1}**")
+                # PEMISAHAN COPY HEX & RGB
+                st.code(hex_color, language="plaintext")
+                st.code(rgb_text, language="plaintext")
         
         st.divider()
         
@@ -63,10 +66,11 @@ if uploaded_file is not None:
             healed_color, success = healer.heal_color(bg_color, fg_color)
             rasio_baru = healer.calculate_contrast_ratio(bg_color, healed_color)
             
-            # Konversi RGB ke HEX untuk keperluan tampilan CSS
+            # Konversi RGB ke HEX
             hex_bg = '#%02x%02x%02x' % tuple(bg_color)
             hex_fg = '#%02x%02x%02x' % tuple(fg_color)
             hex_healed = '#%02x%02x%02x' % tuple(healed_color)
+            rgb_healed = f"rgb{tuple(healed_color)}"
             
             # Tampilan Perbandingan (Before - After)
             col_before, col_arrow, col_after = st.columns([4, 1, 4])
@@ -91,7 +95,18 @@ if uploaded_file is not None:
                 <div style="background-color:{hex_bg}; padding:30px; border-radius:10px; border:2px solid green; text-align:center;">
                     <span style="color:{hex_healed}; font-size:24px; font-weight:bold;">Contoh Teks Elemen {i+2}</span>
                 </div>
-                <p style="text-align:center; font-size:16px; margin-top:5px;">Rasio Kontras: <b>{rasio_baru:.2f}:1</b> | ✅ Lulus WCAG</p>
+                <p style="text-align:center; font-size:16px; margin-top:5px; margin-bottom:5px;">Rasio Kontras: <b>{rasio_baru:.2f}:1</b> | ✅ Lulus WCAG</p>
                 """, unsafe_allow_html=True)
+                
+                # PEMISAHAN COPY HEX & RGB UNTUK HASIL HEALED
+                if not lulus_asli:
+                    st.caption("Warna Baru (Koreksi):")
+                    c1, c2 = st.columns(2)
+                    with c1:
+                        st.code(hex_healed, language="plaintext")
+                    with c2:
+                        st.code(rgb_healed, language="plaintext")
+                else:
+                    st.info("Warna asli sudah lulus standar, tidak ada perubahan.")
             
-            st.write("---") # Garis pemisah antar warna
+            st.write("---")
